@@ -1,0 +1,22 @@
+﻿<UserControl x:Class="HabbitFlow.Views.USERCONTROL.TopBar"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:HabbitFlow.Views.USERCONTROL"
+             mc:Ignorable="d" 
+           
+             x:Name="MyControl"
+             d:DesignHeight="20" d:DesignWidth="1080"
+             >
+    <Grid  Background="Transparent" >
+        <Border CornerRadius="12 12 0 0" Background="Transparent" BorderBrush="Black" BorderThickness="1" />
+
+
+        <Button Content="▢" FontSize="20" Padding=" 0 -20 0 0" Width="40" Height="40" HorizontalAlignment="Right" 
+                Margin="0,0,59,-4" Style="{StaticResource MaterialDesignToolButton}"
+                 Click="Button_Click"/>
+        <Button Content="-" FontSize="25" Padding=" 0 -20 0 0" Width="40" Height="40" Click="Button_Click_1" HorizontalAlignment="Right" Margin="0,0,99,-4" Style="{StaticResource MaterialDesignToolButton}" />
+        <Button Content="X" FontSize="15" Padding=" 0 -20 0 0" Width="40" Height="40" Click="Button_Click_2" HorizontalAlignment="Right" Margin="0,0,9,-4" Style="{StaticResource MaterialDesignToolButton}" />
+    </Grid>
+</UserControl>

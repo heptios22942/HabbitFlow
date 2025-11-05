@@ -1,0 +1,32 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Style TargetType="UserControl" x:Key="Usercontrol_Dlya_Main">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="UserControl">
+                    <Border CornerRadius="25" Background="LightCyan" BorderBrush="Black" BorderThickness="1">
+                        <ContentPresenter/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <Setter Property="Opacity" Value="0"/>
+        <Style.Triggers>
+            <!-- Используем EventTrigger вместо Property Trigger -->
+            <EventTrigger RoutedEvent="UserControl.Loaded">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <!-- Плавное появление -->
+                        <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                                         From="0" To="1" Duration="0:0:0.4"/>
+
+                        <!-- Движение слева направо -->
+                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(TranslateTransform.X)"
+                                         From="-20" To="0" Duration="0:0:0.4"/>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+        </Style.Triggers>
+    </Style>
+</ResourceDictionary>

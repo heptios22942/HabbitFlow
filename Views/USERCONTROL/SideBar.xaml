@@ -1,0 +1,56 @@
+﻿<!-- Views/SidebarView.xaml -->
+<UserControl x:Class="HabbitFlow.Views.USERCONTROL.SideBar"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+xmlns:iconPacks="http://materialdesigninxaml.net/winfx/xaml/icons/"
+             mc:Ignorable="d" 
+             d:DesignHeight="1200" d:DesignWidth="200">
+
+    <Grid Background="Transparent" Width="200" Height="1200">
+        <Border CornerRadius="0 25 25 0" Margin="0 0 0 0" 
+                BorderThickness="1" BorderBrush="Green" Background="#FFE3EAE0">
+            <StackPanel Orientation="Vertical" Margin="10">
+
+                <!-- Заголовок -->
+                <TextBlock Text="💫 HabbitFlow" 
+                          FontSize="14" FontWeight="Bold" 
+                          HorizontalAlignment="Center" 
+                          Margin="0,10,0,20"
+                          Foreground="#FF2E7D32"/>
+
+                <!-- Основная навигация -->
+                <RadioButton x:Name="dashboard" Content="📊 Дашборд" 
+                        Command="{Binding NavigateToDashboardCommand}"
+                        Style="{StaticResource MaterialDesignFlatButton}"
+                        HorizontalAlignment="Stretch"
+                        Margin="2,5"
+                        Height="35"/>
+
+                <RadioButton Content="🔄    группа " 
+                        Command="{Binding NavigateToHabitsCommand}"
+                        Style="{StaticResource MaterialDesignFlatButton}"
+                        HorizontalAlignment="Stretch"
+                        Margin="2,5"
+                        Height="35"/>
+
+                <RadioButton Content="📈 Аналитика" 
+                        Command="{Binding NavigateToAnalyticsCommand}"
+                        Style="{StaticResource MaterialDesignFlatButton}"
+                        HorizontalAlignment="Stretch"
+                        Margin="2,5"
+                        Height="35"/>
+
+                <!-- Разделитель -->
+                <Rectangle Height="1" Fill="Green" Margin="5,15,5,10" Opacity="0.3"/>
+                <Grid Margin="18 2 5 5" Height="35" >
+                    <materialDesign:PackIcon Kind="User" VerticalAlignment="Center" Margin="28 0 0 0" />
+                    <RadioButton Content="    Профиль" Style="{StaticResource MaterialDesignFlatButton}" />
+                </Grid>
+
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>
