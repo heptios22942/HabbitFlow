@@ -1,6 +1,8 @@
 ﻿namespace HabbitFlow.Models.Enums
 {
-    class HabitType
+    public enum HabitType
     {
+        Good,  // Хорошая привычка
+        Bad    // Плохая привычка
     }
 }

@@ -22,5 +22,10 @@ namespace HabbitFlow.Services
             Application.Current.MainWindow?.Close();
             Application.Current.MainWindow = null;
         }
+
+        public void NavigateToWindow()
+        {
+
+        }
     }
 }
