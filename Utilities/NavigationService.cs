@@ -35,7 +35,7 @@ namespace HabbitFlow.Utilities
 
             // Показываем новое окно и закрываем текущее
             newWindow.Show();
-            _currentWindow?.Hide(); // Скрываем вместо закрытия для возможности GoBack
+            _currentWindow?.Close(); // Скрываем вместо закрытия для возможности GoBack
             _currentWindow = newWindow;
         }
 
@@ -54,7 +54,7 @@ namespace HabbitFlow.Utilities
             {
                 var previousWindow = _navigationHistory.Pop();
                 previousWindow.Show();
-                _currentWindow?.Hide();
+                _currentWindow?.Close();
                 _currentWindow = previousWindow;
             }
             else

@@ -178,7 +178,7 @@ Grid.Row="2"
 Margin="73,194,327,181" 
 Grid.Row="2" 
                 Width="100" Grid.RowSpan="2" Style="{StaticResource MaterialDesignHelperTextBlock}" Grid.Column="1">
-                <Hyperlink NavigateUri="EmailConfirmation.xaml">
+                <Hyperlink NavigateUri="/EmailConfirmation.xaml">
                     Забыли пароль?
                 </Hyperlink>
             </TextBlock>

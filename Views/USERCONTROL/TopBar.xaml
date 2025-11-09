@@ -9,14 +9,14 @@
              x:Name="MyControl"
              d:DesignHeight="20" d:DesignWidth="1080"
              >
-    <Grid  Background="Transparent" >
-        <Border CornerRadius="12 12 0 0" Background="Transparent" BorderBrush="Black" BorderThickness="1" />
+    <Grid   >
+        <Border CornerRadius="8 8 0 0" Background="#E8E8E8" BorderBrush="Black" BorderThickness="0 0 0 1.2 " />
 
 
         <Button Content="▢" FontSize="20" Padding=" 0 -20 0 0" Width="40" Height="40" HorizontalAlignment="Right" 
                 Margin="0,0,59,-4" Style="{StaticResource MaterialDesignToolButton}"
                  Click="Button_Click"/>
-        <Button Content="-" FontSize="25" Padding=" 0 -20 0 0" Width="40" Height="40" Click="Button_Click_1" HorizontalAlignment="Right" Margin="0,0,99,-4" Style="{StaticResource MaterialDesignToolButton}" />
+        <Button Content="-" FontSize="25" Padding=" 0 -24 0 0" Width="40" Height="40" Click="Button_Click_1" HorizontalAlignment="Right" Margin="0,0,99,-4" Style="{StaticResource MaterialDesignToolButton}" />
         <Button Content="X" FontSize="15" Padding=" 0 -20 0 0" Width="40" Height="40" Click="Button_Click_2" HorizontalAlignment="Right" Margin="0,0,9,-4" Style="{StaticResource MaterialDesignToolButton}" />
     </Grid>
 </UserControl>

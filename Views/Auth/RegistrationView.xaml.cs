@@ -1,5 +1,6 @@
 ﻿using System.Windows;
-
+using HabbitFlow.ViewModels.Auth;
+using HabbitFlow.Utilities;
 namespace HabbitFlow.Views.Auth
 {
     /// <summary>
@@ -10,6 +11,10 @@ namespace HabbitFlow.Views.Auth
         public RegistrationView()
         {
             InitializeComponent();
+            var nav = new NavigationService();
+            nav.SetCurrentWindow(this);
+          
+            DataContext = new RegistrationViewModel(nav);
         }
     }
 }

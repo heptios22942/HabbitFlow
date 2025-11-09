@@ -24,21 +24,21 @@ xmlns:iconPacks="http://materialdesigninxaml.net/winfx/xaml/icons/"
                 <!-- Основная навигация -->
                 <RadioButton x:Name="dashboard" Content="📊 Дашборд" 
                         Command="{Binding NavigateToDashboardCommand}"
-                        Style="{StaticResource MaterialDesignFlatButton}"
+                        Style="{StaticResource BtnStyle}"
                         HorizontalAlignment="Stretch"
                         Margin="2,5"
                         Height="35"/>
 
                 <RadioButton Content="🔄    группа " 
-                        Command="{Binding NavigateToHabitsCommand}"
-                        Style="{StaticResource MaterialDesignFlatButton}"
+                        Command="{Binding NavigateToHabitGroupsCommand}"
+                        Style="{StaticResource BtnStyle}"
                         HorizontalAlignment="Stretch"
                         Margin="2,5"
                         Height="35"/>
 
                 <RadioButton Content="📈 Аналитика" 
                         Command="{Binding NavigateToAnalyticsCommand}"
-                        Style="{StaticResource MaterialDesignFlatButton}"
+                        Style="{StaticResource BtnStyle}"
                         HorizontalAlignment="Stretch"
                         Margin="2,5"
                         Height="35"/>
