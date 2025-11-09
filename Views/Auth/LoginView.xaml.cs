@@ -1,6 +1,8 @@
 ﻿using HabbitFlow.ViewModels;
 using System.Windows;
 using System.Windows.Controls;
+using HabbitFlow.ViewModels.Auth;
+using HabbitFlow.Utilities;
 namespace HabbitFlow.Views.Auth
 {
     /// <summary>
@@ -12,7 +14,9 @@ namespace HabbitFlow.Views.Auth
         public LoginView()
         {
             InitializeComponent();
-            DataContext = new LoginViewModel();
+            var nav = new NavigationService();
+            nav.SetCurrentWindow(this);
+            DataContext = new LoginViewModel(nav);
 
             // Обработчик для PasswordBox
             PasswordBox.PasswordChanged += (s, e) =>
@@ -26,6 +30,6 @@ namespace HabbitFlow.Views.Auth
             };
         }
 
-
     }
+    
 }

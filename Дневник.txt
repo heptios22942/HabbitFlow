@@ -1,0 +1,1 @@
+﻿тебе надо изменить в registration xaml значения чтобы работал initialize compentent; 8 11 2025

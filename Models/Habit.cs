@@ -1,7 +1,7 @@
 ﻿using HabbitFlow.Models.Enums;
 using System.Windows.Media;
 
-namespace HabitTracker.Models
+namespace HabbitFlow.Models
 {
     
     public class Habit

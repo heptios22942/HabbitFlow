@@ -170,7 +170,7 @@
 Margin="321,193,79,182" 
 Grid.Row="2" 
                 Width="100" Grid.RowSpan="2" Style="{StaticResource MaterialDesignHelperTextBlock}">
-                <Hyperlink NavigateUri="RegistrationView.xaml">
+                <Hyperlink NavigateUri="RegistrationView.xaml" Command="{Binding NavigateToRegCommand}">
                     Регистрация
                 </Hyperlink>
             </TextBlock>

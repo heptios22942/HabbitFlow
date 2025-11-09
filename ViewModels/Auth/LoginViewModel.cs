@@ -1,35 +1,93 @@
-﻿using HabbitFlow.Views;
+﻿using CommunityToolkit.Mvvm.Input;
+
+using HabbitFlow.Utilities;
+using HabbitFlow.ViewModels.Auth;
+using HabbitFlow.Views;
 using HabbitFlow.Views.Auth;
 using System;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Input;
-using HabbitFlow.ViewModels.Auth;
-using HabbitFlow.Utilities;
-
-namespace HabbitFlow.ViewModels
+// Добавьте это в самый верх файла, перед всеми using
+using RelayCommand = CommunityToolkit.Mvvm.Input.RelayCommand;
+ using INavigationService = HabbitFlow.Utilities.INavigationService;
+namespace HabbitFlow.ViewModels.Auth
 {
     public partial class LoginViewModel : ViewModelBase
     {
-        private string   _username;
+        public string Name { get; set; } = string.Empty;
+
+        private readonly INavigationService _navigationService;
+
+        public RelayCommand NavigateToRegCommand { get; }
+
+        public LoginViewModel(INavigationService navigationService)
+        {
+            _navigationService = navigationService;
+            Name = string.Empty;
+
+            NavigateToRegCommand = new RelayCommand(
+                execute: () => _navigationService.NavigateTo<RegistrationView>(),
+                canExecute: () => true
+            );
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+        private string _username;
         private string _password;
         private ICommand _loginCommand;
+        public RelayCommand NavigateToRegV;
+
+
+    
 
         public string Username
         {
             get => _username;
-            set => SetProperty(ref _username, value);
+            set
+            {
+                if (SetProperty(ref _username, value))
+                {
+                    // Обновляем состояние команды при изменении имени пользователя
+                    (_loginCommand as RelayCommand)?.NotifyCanExecuteChanged();
+                }
+            }
         }
 
         public string Password
         {
             get => _password;
-            set => SetProperty(ref _password, value);
+            set
+            {
+                if (SetProperty(ref _password, value))
+                {
+                    // Обновляем состояние команды при изменении пароля
+                    (_loginCommand as RelayCommand)?.NotifyCanExecuteChanged();
+                }
+            }
         }
 
         public ICommand LoginCommand => _loginCommand ??= new RelayCommand(
-            execute: (_) => Login(),
-            canexecute: (_) => CanLogin()
+            execute: () => Login(),
+            canExecute: () => CanLogin()
         );
+
+        
+
+      
+
+     
 
         private void Login()
         {

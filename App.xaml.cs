@@ -1,4 +1,7 @@
-﻿using HabbitFlow.Views;
+﻿using HabbitFlow.Utilities;
+using HabbitFlow.ViewModels;
+using HabbitFlow.ViewModels.Auth;
+using HabbitFlow.Views;
 using HabbitFlow.Views.Auth;
 using System.Windows;
 
@@ -14,7 +17,8 @@ namespace HabbitFlow
             // Создаем и показываем загрузочное окно
             LoadingWindow loadingWindow = new LoadingWindow();
             loadingWindow.Show();
-
+            var navigationService = new NavigationService();
+            var loginViewModel = new LoginViewModel(navigationService);
             // Используем Task.Run для фоновой работы
             Task.Run(() =>
             {
@@ -28,6 +32,8 @@ namespace HabbitFlow
                     LoginView login = new LoginView();
                     loadingWindow.Close();
                     login.Show();
+
+                    navigationService.SetCurrentWindow(login);
                 }));
             });
 
