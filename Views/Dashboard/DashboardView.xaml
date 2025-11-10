@@ -3,143 +3,62 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             Style="{StaticResource Usercontrol_Dlya_Main}">
-    <!--<UserControl.Resources>
-        <converters:HabitTypeToColorConverter x:Key="HabitTypeToColorConverter"/>
-    </UserControl.Resources>-->
-    <ScrollViewer VerticalScrollBarVisibility="Auto">
-        <StackPanel Margin="20">
+             xmlns:colorm="clr-namespace:MaterialDesignColors;assembly=MaterialDesignColors"
+             Width="1630" Height="1006">
 
-            <!-- ПРИВЕТСТВИЕ -->
-            <Border Background="{DynamicResource PrimaryHueLightBrush}" 
-                    CornerRadius="12" Padding="20" Margin="0,0,0,20">
-                <TextBlock Text="{Binding WelcomeMessage}" 
-                          FontSize="18" FontWeight="SemiBold"
-                          Foreground="{DynamicResource PrimaryHueMidForegroundBrush}"/>
-            </Border>
 
-            <!-- СТАТИСТИКА В ПЛИТКАХ -->
-            <TextBlock Text="Сегодня" FontSize="16" FontWeight="Bold" Margin="0,0,0,15"/>
 
-            <ItemsControl ItemsSource="{Binding TodayStats}">
-                <ItemsControl.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <WrapPanel Orientation="Horizontal"/>
-                    </ItemsPanelTemplate>
-                </ItemsControl.ItemsPanel>
 
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <!-- ПЛИТКА СТАТИСТИКИ -->
-                        <Border Width="180" Height="120" Margin="0,0,15,15"
-                                Background="{DynamicResource MaterialDesignCardBackground}"
-                                CornerRadius="10" BorderThickness="1" 
-                                BorderBrush="{DynamicResource MaterialDesignDivider}">
 
-                            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-                                <TextBlock Text="{Binding Icon}" FontSize="24" 
-                                          HorizontalAlignment="Center" Margin="0,0,0,8"/>
-                                <TextBlock Text="{Binding Value}" FontSize="28" FontWeight="Bold"
-                                          HorizontalAlignment="Center" Foreground="{DynamicResource PrimaryHueMidBrush}"/>
-                                <TextBlock Text="{Binding Title}" FontSize="12" 
-                                          HorizontalAlignment="Center" Foreground="{DynamicResource MaterialDesignBodyLight}"
-                                          TextWrapping="Wrap" TextAlignment="Center" Margin="5,0,5,0"/>
-                            </StackPanel>
-                        </Border>
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ItemsControl>
 
-            <!-- СЕГОДНЯШНИЕ ПРИВЫЧКИ -->
-            <TextBlock Text="Привычки на сегодня" FontSize="16" FontWeight="Bold" Margin="0,20,0,15"/>
 
-            <ItemsControl ItemsSource="{Binding TodayHabits}">
-                <ItemsControl.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <WrapPanel Orientation="Horizontal"/>
-                    </ItemsPanelTemplate>
-                </ItemsControl.ItemsPanel>
+    <Border CornerRadius="20" Background="White">
 
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        
-                        <Border Width="200" Height="100" Margin="0,0,15,15"
-                                Background="{Binding Type, Converter={StaticResource HabitTypeToColorConverter}}"
-                                CornerRadius="8" Cursor="Hand">
+        <ScrollViewer VerticalScrollBarVisibility="Auto" Background="Transparent">
+            <Grid Margin="20">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
 
-                            <Border.Effect>
-                                <DropShadowEffect BlurRadius="10" ShadowDepth="2" Opacity="0.2"/>
-                            </Border.Effect>
 
-                            <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="*"/>
-                                    <RowDefinition Height="Auto"/>
-                                </Grid.RowDefinitions>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
 
-                                 
-                                <StackPanel Grid.Row="0" Margin="12">
-                                    <TextBlock Text="{Binding Name}" FontWeight="SemiBold" 
-                                              FontSize="14" TextWrapping="Wrap" MaxHeight="36"
-                                              TextTrimming="CharacterEllipsis"/>
-                                    <TextBlock Text="{Binding Time, StringFormat='{}в {0:hh\\:mm}'}" 
-                                              FontSize="11" Margin="0,5,0,0" Opacity="0.7"/>
-                                </StackPanel>
+                </Grid.RowDefinitions>
 
-                                
-                                <Border Grid.Row="1" Background="{Binding StatusColor}" 
-                                        Height="4" CornerRadius="0,0,8,8"/>
-                            </Grid>
-                        </Border>
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ItemsControl>
 
-            <!-- БЫСТРЫЕ ДЕЙСТВИЯ -->
-            <TextBlock Text="Быстрые действия" FontSize="16" FontWeight="Bold" Margin="0,20,0,15"/>
-
-            <WrapPanel>
-                <!-- ПЛИТКА БЫСТРОГО ДЕЙСТВИЯ -->
-                <Border Width="150" Height="80" Margin="0,0,15,15" CornerRadius="8"
-                        Background="{DynamicResource PrimaryHueLightBrush}" Cursor="Hand">
-                    <Button Style="{StaticResource MaterialDesignFlatButton}" 
-                            Command="{Binding CreateHabitCommand}"
-                            HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
-                            Background="Transparent" BorderThickness="0">
-                        <StackPanel>
-                            <TextBlock Text="➕" FontSize="20" HorizontalAlignment="Center"/>
-                            <TextBlock Text="Новая привычка" FontSize="12" HorizontalAlignment="Center"
-                                      Margin="0,5,0,0" TextWrapping="Wrap"/>
-                        </StackPanel>
+                <Label Grid.Row="0" Grid.Column="0" Content="Habits Today" 
+                   FontSize="52" FontFamily="Segoe UI Semibold"  />
+                <Button  Grid.Row="0" Grid.Column="2" Background="Aqua" Width="420" Height="70" HorizontalAlignment="Right" 
+                         Style="{StaticResource  ButtonSignUp}">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button" >
+                            <Border CornerRadius="12" BorderThickness="1" BorderBrush="Black"/>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <StackPanel Grid.Row="1" Grid.ColumnSpan="3" Margin="0 20 0 20" CanHorizontallyScroll="True" Orientation="Horizontal">
+                    <Button Margin="0 0 0 0" Width="500" Height="80" >
+                        <Button.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFB16459"/>
+                                <GradientStop Color="#FFE0DA3F" Offset="1"/>
+                                <GradientStop Color="#FED8C929" Offset="0.015"/>
+                            </LinearGradientBrush>
+                        </Button.Background>
                     </Button>
-                </Border>
+                    <Button Margin="20 0 0 0" Width="500" Height="80" Background="Black"/>
+                    <Button Margin="20 0 0 0" Width="500" Height="80" Background="Black"/>
 
-                <!-- ЕЩЕ ПЛИТКИ БЫСТРЫХ ДЕЙСТВИЙ -->
-                <Border Width="150" Height="80" Margin="0,0,15,15" CornerRadius="8"
-                        Background="{DynamicResource SecondaryHueLightBrush}" Cursor="Hand">
-                    <Button Style="{StaticResource MaterialDesignFlatButton}" 
-                            Command="{Binding ShowAnalyticsCommand}"
-                            HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
-                            Background="Transparent" BorderThickness="0">
-                        <StackPanel>
-                            <TextBlock Text="📊" FontSize="20" HorizontalAlignment="Center"/>
-                            <TextBlock Text="Статистика" FontSize="12" HorizontalAlignment="Center"
-                                      Margin="0,5,0,0" TextWrapping="Wrap"/>
-                        </StackPanel>
-                    </Button>
-                </Border>
-            </WrapPanel>
-
-            <!-- МОТИВАЦИЯ -->
-            <Border Background="{DynamicResource MaterialDesignCardBackground}" 
-                    CornerRadius="10" Padding="20" Margin="0,20,0,0">
-                <StackPanel>
-                    <TextBlock Text="💪 Мотивация на сегодня" FontWeight="SemiBold" Margin="0,0,0,8"/>
-                    <TextBlock Text="{Binding DailyMotivation}" FontStyle="Italic" 
-                              TextWrapping="Wrap" TextAlignment="Center"/>
                 </StackPanel>
-            </Border>
 
-        </StackPanel>
-    </ScrollViewer>
+            </Grid>
+            
+        </ScrollViewer>
+    </Border>
 </UserControl>

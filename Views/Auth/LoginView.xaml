@@ -49,7 +49,7 @@
         </Style>
     </Window.Resources>
 
-    <Border CornerRadius="30" Background="White">
+    <Border CornerRadius="4" Background="White">
 
         <Grid>
             <Grid.ColumnDefinitions>
@@ -62,7 +62,9 @@
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
-            <local:TopBar VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+            <local:TopBar VerticalAlignment="Top" Grid.ColumnSpan="2" Height="20"/>
+
+
             <materialDesign:PackIcon 
                 Kind="User" 
                 Foreground="Green"
