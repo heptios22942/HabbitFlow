@@ -1,7 +1,6 @@
-﻿using System;
+﻿using HabbitFlow.Models.Enums;
 using System.Globalization;
 using System.Windows.Data;
-using HabbitFlow.Models.Enums;
 
 namespace HabbitFlow.Utilities.Converters
 {

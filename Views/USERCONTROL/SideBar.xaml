@@ -7,9 +7,9 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
 xmlns:iconPacks="http://materialdesigninxaml.net/winfx/xaml/icons/"
              mc:Ignorable="d" 
-             d:DesignHeight="1200" d:DesignWidth="200">
+             d:DesignHeight="1200" d:DesignWidth="220">
 
-    <Grid Background="Transparent" Width="200" Height="1200">
+    <Grid Background="Transparent" Width="220" Height="1200">
         <Border CornerRadius="0 25 25 0" Margin="0 0 0 0" 
                 BorderThickness="1" BorderBrush="Green" Background="#FFE3EAE0">
             <StackPanel Orientation="Vertical" Margin="10">
@@ -27,29 +27,51 @@ xmlns:iconPacks="http://materialdesigninxaml.net/winfx/xaml/icons/"
                         Style="{StaticResource BtnStyle}"
                         HorizontalAlignment="Stretch"
                         Margin="2,5"
-                        Height="35"/>
+                         FontSize="20"
+                        Height="100"/>
 
-                <RadioButton Content="🔄    группа " 
+                <RadioButton Content="🔄 Группа " 
                         Command="{Binding NavigateToHabitGroupsCommand}"
                         Style="{StaticResource BtnStyle}"
+                             FontSize="20"
                         HorizontalAlignment="Stretch"
                         Margin="2,5"
-                        Height="35"/>
+                        Height="100"/>
 
                 <RadioButton Content="📈 Аналитика" 
                         Command="{Binding NavigateToAnalyticsCommand}"
                         Style="{StaticResource BtnStyle}"
                         HorizontalAlignment="Stretch"
                         Margin="2,5"
-                        Height="35"/>
+                         FontSize="20"
+Height="100"/>
 
                 <!-- Разделитель -->
                 <Rectangle Height="1" Fill="Green" Margin="5,15,5,10" Opacity="0.3"/>
-                <Grid Margin="18 2 5 5" Height="35" >
-                    <materialDesign:PackIcon Kind="User" VerticalAlignment="Center" Margin="28 0 0 0" />
-                    <RadioButton Content="    Профиль" Style="{StaticResource MaterialDesignFlatButton}" />
-                </Grid>
-
+                
+                    <RadioButton Content="👤Пользователь" 
+        Command="{Binding NavigateToUserCommand}"
+        Style="{StaticResource BtnStyle}"
+        HorizontalAlignment="Stretch"
+        Margin="2,5"
+         FontSize="20"
+Height="100" />
+                
+                <RadioButton Content="🔧 Настройки" 
+        Command="{Binding NavigateToSettingsCommand}"
+                             
+        Style="{StaticResource BtnStyle}"
+        HorizontalAlignment="Stretch"
+        Margin="2,5"
+         FontSize="20"
+Height="100"/>
+                <RadioButton Content="🔔 Уведомления" 
+        Command="{Binding NavigateToNotificationcommand}"
+        Style="{StaticResource BtnStyle}"
+        HorizontalAlignment="Stretch"
+        Margin="2,5"
+        FontSize="18"
+Height="100"/>
             </StackPanel>
         </Border>
     </Grid>

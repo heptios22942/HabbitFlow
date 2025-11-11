@@ -1,5 +1,5 @@
-﻿using System.Windows;
-using HabbitFlow.ViewModels; 
+﻿using HabbitFlow.ViewModels;
+using System.Windows;
 namespace HabbitFlow.Views
 {
     /// <summary>
@@ -15,7 +15,7 @@ namespace HabbitFlow.Views
 
         private void Window_MouseMove(object sender, System.Windows.Input.MouseEventArgs e)
         {
-            
+
         }
     }
 }

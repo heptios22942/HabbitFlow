@@ -1,8 +1,7 @@
-﻿using HabbitFlow.ViewModels;
+﻿using HabbitFlow.Utilities;
+using HabbitFlow.ViewModels.Auth;
 using System.Windows;
 using System.Windows.Controls;
-using HabbitFlow.ViewModels.Auth;
-using HabbitFlow.Utilities;
 namespace HabbitFlow.Views.Auth
 {
     /// <summary>
@@ -31,5 +30,5 @@ namespace HabbitFlow.Views.Auth
         }
 
     }
-    
+
 }

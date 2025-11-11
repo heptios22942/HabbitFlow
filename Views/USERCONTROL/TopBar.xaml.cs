@@ -1,17 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace HabbitFlow.Views.USERCONTROL
 {
@@ -23,8 +12,8 @@ namespace HabbitFlow.Views.USERCONTROL
         public TopBar()
         {
             InitializeComponent();
-        
-       this.MouseLeftButtonDown += TopBar_MouseLeftButtonDown;
+
+            this.MouseLeftButtonDown += TopBar_MouseLeftButtonDown;
         }
 
         private void TopBar_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -40,7 +29,7 @@ namespace HabbitFlow.Views.USERCONTROL
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            
+
             Window.GetWindow(this).WindowState = WindowState.Minimized;
 
 
@@ -72,7 +61,7 @@ namespace HabbitFlow.Views.USERCONTROL
             }
         }
 
-        
+
 
     }
 }

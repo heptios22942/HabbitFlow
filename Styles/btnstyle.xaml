@@ -1,6 +1,5 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-
     <Style x:Key="BtnStyle" TargetType="RadioButton" BasedOn="{StaticResource MaterialDesignFlatButton}">
         <Setter Property="HorizontalAlignment" Value="Center"/>
         <Setter Property="VerticalAlignment" Value="Center"/>
@@ -9,48 +8,46 @@
             <Setter.Value>
                 <ControlTemplate TargetType="RadioButton">
                     <Border x:Name="border"
-                            Height="54"
-                            Width="228"
-                            BorderThickness="0"
-                            CornerRadius="7"
-                            Background="Transparent">
-                        <!-- Фон по умолчанию: #D9E2A7 -->
+                        Height="54"
+                        Width="228"
+                        BorderThickness="0"
+                        CornerRadius="7"
+                        Background="Transparent">
                         <Grid>
                             <!-- Зеленый индикатор слева -->
                             <Border x:Name="Indicator"
-                                    Height="28"
-                                    Margin=" 0 0 0 5"
-                                    Width="4"
-                                    HorizontalAlignment="Left"
-                                    CornerRadius="8"
-                                    VerticalAlignment="Center"
-                                    Background="#588157" 
-                                Visibility="Collapsed" Cursor=""
-                                    />
-                                <!-- Контент -->
-                                <ContentPresenter 
+                                Height="28"
+                                Margin=" 0 0 0 5"
+                                Width="4"
+                                HorizontalAlignment="Left"
+                                CornerRadius="8"
+                                VerticalAlignment="Center"
+                                Background="#588157" 
+                                Visibility="Collapsed"/>
+
+                            <!-- Контент с переносом текста -->
+                            <ContentPresenter x:Name="contentPresenter"
                                 HorizontalAlignment="Left"
                                 VerticalAlignment="Center"
-                                Margin="15 0 0 0"/>
+                                Margin="15 0 15 0"
+                                
+                                />
                         </Grid>
                     </Border>
 
                     <ControlTemplate.Triggers>
                         <!-- Состояние при наведении мыши -->
                         <Trigger Property="IsMouseOver" Value="True">
-                            <!-- При наведении меняем фон на более темный оливковый -->
                             <Setter Property="Background" TargetName="border" Value="#C6CCC3"/>
                             <Setter Property="Visibility" TargetName="Indicator" Value="Collapsed"/>
                         </Trigger>
 
                         <!-- Логика выбора: когда IsChecked=True -->
                         <Trigger Property="IsChecked" Value="True">
-                            <!-- При выборе меняем фон на очень светлый зеленый -->
                             <Setter Property="Background" TargetName="border" Value="#F0F5D8"/>
-                            <!-- Показываем индикатор -->
                             <Setter Property="Visibility" TargetName="Indicator" Value="Visible"/>
+                            <Setter Property="TextElement.FontSize" TargetName="contentPresenter" Value="21.1"/>
                         </Trigger>
-
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>

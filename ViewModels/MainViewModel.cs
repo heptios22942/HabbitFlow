@@ -3,7 +3,9 @@ using HabbitFlow.ViewModels.Analytics;
 using HabbitFlow.ViewModels.Dashboard;
 using HabbitFlow.ViewModels.Habits;
 using System.Windows.Input;
-
+using HabbitFlow.ViewModels.Notification;
+using HabbitFlow.ViewModels.Settings;
+using HabbitFlow.ViewModels.User;
 
 
 namespace HabbitFlow.ViewModels
@@ -26,6 +28,9 @@ namespace HabbitFlow.ViewModels
         public ICommand NavigateToDashboardCommand { get; }
         public ICommand NavigateToHabitGroupsCommand { get; }
         public ICommand NavigateToAnalyticsCommand { get; }
+        public ICommand NavigateToUserCommand { get; }
+        public ICommand NavigateToSettingsCommand { get; }
+        public ICommand NavigateToNotificationcommand { get; }
 
         public MainViewModel()
         {
@@ -33,9 +38,24 @@ namespace HabbitFlow.ViewModels
             NavigateToDashboardCommand = new RelayCommand((param) => NavigateToDashboard());
             NavigateToHabitGroupsCommand = new RelayCommand((param) => NavigateToHabitGroups());
             NavigateToAnalyticsCommand = new RelayCommand((param) => NavigateToAnalytics());
+            NavigateToUserCommand = new RelayCommand((param) => NavigateToUser());
+            NavigateToSettingsCommand = new RelayCommand((param) => NavigateToSettings());
+            NavigateToNotificationcommand = new RelayCommand((param) => NavigateToNotificationSettings());
 
             // Начальная навигация
             NavigateToDashboard();
+        }
+        private void NavigateToUser()
+        {
+            CurrentView = new UserVm();
+        }
+        private void NavigateToSettings()
+        {
+            CurrentView = new SettingsVM();
+        }
+        private void NavigateToNotificationSettings()
+        {
+            CurrentView = new NotificationSettingsVM();
         }
 
         private void NavigateToDashboard()

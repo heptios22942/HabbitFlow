@@ -1,5 +1,4 @@
 ﻿using HabbitFlow.Utilities;
-using HabbitFlow.ViewModels;
 using HabbitFlow.ViewModels.Auth;
 using HabbitFlow.Views;
 using HabbitFlow.Views.Auth;

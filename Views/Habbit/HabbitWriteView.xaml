@@ -1,40 +1,170 @@
 ﻿<UserControl x:Class="HabbitFlow.Views.Habbit.HabbitWriteView"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:HabbitFlow.Views.Habbit"
-             xmlns:converters="clr-namespace:HabbitFlow.Utilities.Converters"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800" Style="{StaticResource Usercontrol_Dlya_Main}" >
+             d:DesignHeight="1000" d:DesignWidth="800">
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
 
-    <UserControl.Resources>
-        <converters:HabbitTypeToStringConverter x:Key="HabitTypeToStringConverter"/>
-        <converters:HabitTypeToColorConverter x:Key="HabitTypeToColorConverter"/>
-    </UserControl.Resources>
+        <!-- Header -->
+        <Border Grid.Row="0" Background="#4CAF50" Padding="20">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
 
-    <Grid >
-        <ComboBox SelectedValue="{Binding CurrentHabit.Type}" 
-                  ItemsSource="{Binding HabitTypes}"
-                  Margin="20">
-            <ComboBox.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
-                        <Border Width="16" Height="16" CornerRadius="3" Margin="0,0,8,0"
-                                Background="{Binding   Converter={StaticResource HabitTypeToColorConverter}}"/>
-                        <TextBlock Text="{Binding   Converter={StaticResource HabitTypeToStringConverter}}"/>
-                    </StackPanel>
-                </DataTemplate>
-            </ComboBox.ItemTemplate>
-        </ComboBox>
+                <Button Grid.Column="0" Style="{StaticResource MaterialDesignIconButton}"
+                        Foreground="White" Command="{Binding CancelCommand}">
+                    <materialDesign:PackIcon Kind="Close"/>
+                </Button>
 
-        <Border Background="{Binding CurrentHabit.Type, Converter={StaticResource HabitTypeToColorConverter}}"
-                Width="200" Height="100" Margin="20,80,0,0"
-                CornerRadius="8">
-            <TextBlock Text="{Binding CurrentHabit.Name}" 
-                       VerticalAlignment="Center" HorizontalAlignment="Center"
-                       FontWeight="SemiBold"/>
+                <TextBlock Grid.Column="1" Text="{Binding Title}" 
+                          FontSize="22" FontWeight="Bold" 
+                          Foreground="White" VerticalAlignment="Center" Margin="15,0,0,0"
+                          TextAlignment="Center"/>
+
+                <Button Grid.Column="2" Content="Сохранить" 
+                        Background="White"
+                        Foreground="#4CAF50"
+                        BorderThickness="0"
+                        Padding="12,6"
+                        
+                        FontWeight="SemiBold"
+                        Command="{Binding SaveCommand}"/>
+            </Grid>
         </Border>
+
+        <!-- Content -->
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" Background="#F8F9FA">
+            <StackPanel Margin="20" MaxWidth="500">
+                <!-- Basic Info -->
+                <Border Background="White" CornerRadius="8" BorderThickness="1" BorderBrush="#E0E0E0"
+                        Margin="0,0,0,20" Padding="20">
+                    <StackPanel>
+                        <TextBlock Text="Основная информация" 
+                                  FontSize="16" FontWeight="Bold" Foreground="#333333"
+                                  Margin="0,0,0,15"/>
+
+                        <TextBox Text="{Binding Name}" 
+                                BorderThickness="1" BorderBrush="#E0E0E0" 
+                                Padding="12" Background="White" FontSize="13"
+                                materialDesign:HintAssist.Hint="Название привычки"
+                                Margin="0,0,0,12"/>
+
+                        <TextBox Text="{Binding Description}" 
+                                BorderThickness="1" BorderBrush="#E0E0E0" 
+                                Padding="12" Background="White" FontSize="13"
+                                materialDesign:HintAssist.Hint="Описание"
+                                Height="60" VerticalScrollBarVisibility="Auto"
+                                TextWrapping="Wrap" AcceptsReturn="True"
+                                Margin="0,0,0,12"/>
+
+                        <ComboBox ItemsSource="{Binding Categories}"
+                                 SelectedItem="{Binding SelectedCategory}"
+                                 BorderThickness="1" BorderBrush="#E0E0E0" 
+                                 Padding="12" Background="White" FontSize="13"
+                                 materialDesign:HintAssist.Hint="Категория"
+                                 Margin="0,0,0,12"/>
+
+                        <ComboBox ItemsSource="{Binding Icons}"
+                                 SelectedItem="{Binding SelectedIcon}"
+                                 BorderThickness="1" BorderBrush="#E0E0E0" 
+                                 Padding="12" Background="White" FontSize="13"
+                                 materialDesign:HintAssist.Hint="Иконка"
+                                 Margin="0,0,0,12">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <materialDesign:PackIcon Kind="{Binding}" Width="20" Height="20"/>
+                                        <TextBlock Text="{Binding}" Margin="10,0,0,0"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+                    </StackPanel>
+                </Border>
+                <Border Background="White" CornerRadius="8" BorderThickness="1" BorderBrush="#E0E0E0"
+                        Padding="20">
+                    <StackPanel>
+                        <TextBlock Text="Расписание" 
+                                  FontSize="16" FontWeight="Bold" Foreground="#333333"
+                                  Margin="0,0,0,15"/>
+
+                        <ComboBox ItemsSource="{Binding Frequencies}"
+                                 SelectedItem="{Binding SelectedFrequency}"
+                                 BorderThickness="1" BorderBrush="#E0E0E0" 
+                                 Padding="12" Background="White" FontSize="13"
+                                 materialDesign:HintAssist.Hint="Частота"
+                                 Margin="0,0,0,12"/>
+
+                        <StackPanel Orientation="Horizontal" Margin="0,0,0,12">
+                            <TextBlock Text="Время:" 
+                                      FontSize="13" FontWeight="Medium" Foreground="#333333"
+                                      VerticalAlignment="Center" Width="80"/>
+                            <TextBox Text="{Binding Time}" 
+                                    BorderThickness="1" BorderBrush="#E0E0E0" 
+                                    Padding="12" Background="White" FontSize="13"
+                                    Width="100"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Дни недели:" 
+                                      FontSize="13" FontWeight="Medium" Foreground="#333333"
+                                      VerticalAlignment="Center" Width="80"/>
+                            <ItemsControl ItemsSource="{Binding DaysOfWeek}">
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <WrapPanel Orientation="Horizontal"/>
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <CheckBox Content="{Binding Name}" 
+                                                 IsChecked="{Binding IsSelected}"
+                                                 Margin="5,2" FontSize="12"/>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+
+                <!-- Schedule -->
+
+                <!-- Reminders -->
+                <Border Background="White" CornerRadius="8" BorderThickness="1" BorderBrush="#E0E0E0"
+                        Padding="20">
+                    <StackPanel>
+                        <TextBlock Text="Напоминания" 
+                                  FontSize="16" FontWeight="Bold" Foreground="#333333"
+                                  Margin="0,0,0,15"/>
+
+                        <CheckBox Content="Включить напоминания" 
+                                 IsChecked="{Binding EnableReminders}"
+                                 FontSize="13" Foreground="#333333"
+                                 Margin="0,0,0,12"/>
+                        <!--{Binding EnableReminders, Converter={StaticResource BooleanToVisibilityConverter}}-->
+                        <StackPanel Orientation="Horizontal" 
+                                   Visibility="Visible">
+                            <TextBlock Text="За сколько минут напоминать:" 
+                                      FontSize="13" Foreground="#666666"
+                                      VerticalAlignment="Center" Width="180"/>
+                            <TextBox Text="{Binding ReminderMinutes}" 
+                                    BorderThickness="1" BorderBrush="#E0E0E0" 
+                                    Padding="8" Background="White" FontSize="13"
+                                    Width="60" HorizontalAlignment="Left"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </ScrollViewer>
     </Grid>
 </UserControl>

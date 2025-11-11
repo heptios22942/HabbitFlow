@@ -1,0 +1,101 @@
+﻿<UserControl x:Class="HabbitFlow.Views.User.UserView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="800">
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <Border Grid.Row="0" Background="#4CAF50" Padding="20">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <materialDesign:PackIcon Kind="AccountCircle" Grid.Column="0" 
+                                        Foreground="White" VerticalAlignment="Center"/>
+                <TextBlock Grid.Column="1" Text="Профиль пользователя" 
+                          FontSize="22" FontWeight="Bold" 
+                          Foreground="White" VerticalAlignment="Center" Margin="15,0,0,0"/>
+            </Grid>
+        </Border>
+
+        <!-- Content -->
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" Background="#F8F9FA">
+            <StackPanel Margin="20" MaxWidth="400">
+                <!-- Profile Photo -->
+                <Border HorizontalAlignment="Center" Margin="0,0,0,30">
+                    <StackPanel HorizontalAlignment="Center">
+                        <Border Width="100" Height="100" 
+                                Background="#4CAF50" 
+                                CornerRadius="50" BorderThickness="3" BorderBrush="White">
+                            <materialDesign:PackIcon Kind="AccountCircle" Width="70" Height="70" 
+                                                    Foreground="White" HorizontalAlignment="Center" 
+                                                    VerticalAlignment="Center"/>
+                        </Border>
+                        <Button Content="Изменить фото" 
+                                Style="{StaticResource ButtonSignUp}"
+                                Foreground="#4CAF50"
+                                FontWeight="Medium"
+                                HorizontalAlignment="Center" Margin="0,10,0,0"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- User Information -->
+                <Border Background="White" CornerRadius="8" BorderThickness="1" BorderBrush="#E0E0E0" Padding="20">
+                    <StackPanel>
+                        <TextBlock Text="Основная информация" 
+                                  FontSize="16" FontWeight="Bold" Foreground="#333333"
+                                  Margin="0,0,0,15"/>
+
+                        <TextBox BorderThickness="1" BorderBrush="#E0E0E0" 
+                                Padding="12" Background="White"
+                                materialDesign:HintAssist.Hint="Имя пользователя"
+                                FontSize="13"
+                                Text="{Binding UserName}"
+                                Margin="0,0,0,12"/>
+
+                        <TextBox BorderThickness="1" BorderBrush="#E0E0E0" 
+                                Padding="12" Background="White"
+                                materialDesign:HintAssist.Hint="Email"
+                                FontSize="13"
+                                Text="{Binding Email}"
+                                Margin="0,0,0,12"/>
+
+                        <DatePicker BorderThickness="1" BorderBrush="#E0E0E0" 
+                                   Padding="12" Background="White"
+                                   materialDesign:HintAssist.Hint="Дата рождения"
+                                   FontSize="13"
+                                   SelectedDate="{Binding BirthDate}"
+                                   Margin="0,0,0,12"/>
+
+                        <ComboBox BorderThickness="1" BorderBrush="#E0E0E0" 
+                                 Padding="12" Background="White"
+                                 materialDesign:HintAssist.Hint="Уровень опыта"
+                                 FontSize="13"
+                                 ItemsSource="{Binding ExperienceLevels}"
+                                 SelectedItem="{Binding SelectedExperienceLevel}"
+                                 Margin="0,0,0,20"/>
+
+                        <Button Content="Сохранить изменения" 
+                                Background="#4CAF50"
+                                Foreground="White"
+                                BorderThickness="0"
+                                Padding="0"
+                                FontSize="12"
+                                FontWeight="SemiBold"
+                                Command="{Binding SaveProfileCommand}"/>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</UserControl>

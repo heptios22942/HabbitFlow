@@ -7,7 +7,16 @@
         xmlns:analizVM="clr-namespace:HabbitFlow.ViewModels.Analytics"    
         xmlns:dash="clr-namespace:HabbitFlow.Views.Dashboard"
         xmlns:habbitgroup="clr-namespace:HabbitFlow.Views.Habbit"
-        
+		
+        xmlns:UserV="clr-namespace:HabbitFlow.Views.User"
+        xmlns:UserVM="clr-namespace:HabbitFlow.ViewModels.User"
+		
+        xmlns:settingV="clr-namespace:HabbitFlow.Views.Settings"
+        xmlns:settingVM="clr-namespace:HabbitFlow.ViewModels.Settings"
+		
+        xmlns:notifV="clr-namespace:HabbitFlow.Views.Notification"
+        xmlns:notifVM="clr-namespace:HabbitFlow.ViewModels.Notification"
+		
         xmlns:analiz="clr-namespace:HabbitFlow.Views.Analytics" 
         xmlns:local="clr-namespace:HabbitFlow.Views.USERCONTROL"
         Background="Transparent"
@@ -17,58 +26,71 @@
         Height="1080" 
         Width="1920">
 
-    <Window.Resources>
-        <!-- Dashboard -->
-        <DataTemplate DataType="{x:Type dashVM:DashboardViewModel}">
-            <dash:DashboardView />
-        </DataTemplate>
+	<Window.Resources>
+		<!-- Dashboard -->
+		<DataTemplate DataType="{x:Type dashVM:DashboardViewModel}">
+			<dash:DashboardView />
+		</DataTemplate>
+		
+		<DataTemplate DataType="{x:Type settingVM:SettingsVM }">
+			<settingV:SettingsView/>
+		</DataTemplate>
 
-        <!-- Habits - исправлен неймспейс -->
+		<DataTemplate DataType="{x:Type UserVM:UserVm }">
+			<UserV:UserView/>
+		</DataTemplate>
+		<DataTemplate DataType="{x:Type notifVM:NotificationSettingsVM }">
+			<notifV:NotificationMain/>
+		</DataTemplate>
+		
+		<!-- Habits - исправлен неймспейс -->
 
-        <DataTemplate DataType="{x:Type habbitgroupVM:HabitGroupListViewModel}">
-            <habbitgroup:HabbitsGroupView/>
-        </DataTemplate>
+		<DataTemplate DataType="{x:Type habbitgroupVM:HabitGroupListViewModel}">
+			<habbitgroup:HabbitsGroupView/>
+		</DataTemplate>
 
 
-        <!-- Analytics -->
-        <DataTemplate DataType="{x:Type analizVM:AnalyticsDashboardViewModel}">
-            <analiz:AnalyticsDashboardView />
-        </DataTemplate>
+		<!-- Analytics -->
+		<DataTemplate DataType="{x:Type analizVM:AnalyticsDashboardViewModel}">
+			<analiz:AnalyticsDashboardView />
+		</DataTemplate>
 
-    </Window.Resources>
+	</Window.Resources>
 
-    <WindowChrome.WindowChrome>
-        <WindowChrome CaptionHeight="10" />
-    </WindowChrome.WindowChrome>
+	<WindowChrome.WindowChrome>
+		<WindowChrome CaptionHeight="10" />
+	</WindowChrome.WindowChrome>
 
-    <Border CornerRadius="12" Background="White" BorderBrush="Black" BorderThickness="2">
-        <Grid Background="Transparent">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="200"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="36"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
+	<Border CornerRadius="12" Background="White" BorderBrush="Black" BorderThickness="2">
+		<Grid Background="Transparent">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="200"/>
+				<ColumnDefinition Width="*"/>
+			</Grid.ColumnDefinitions>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="36"/>
+				<RowDefinition Height="auto"/>
+				<RowDefinition Height="*"/>
+			</Grid.RowDefinitions>
 
-            <!-- Top Bar -->
-            <Grid Grid.ColumnSpan="2">
-                <local:TopBar/>
-            </Grid>
+			<!-- Top Bar -->
+			<Grid Grid.ColumnSpan="2">
+				<local:TopBar/>
+			</Grid>
 
-            <!-- Side Bar -->
-            <Grid Grid.Column="0" VerticalAlignment="Bottom" Height="auto" Grid.Row="3" Margin="0 25 0 0" Background="Transparent">
-                <local:SideBar DataContext="{Binding}"/>
-            </Grid>
+			<!-- Side Bar -->
+			<Grid Grid.Column="0" VerticalAlignment="Bottom" Height="auto" Grid.Row="3" Margin="0 25 0 0" Background="Transparent">
+				<local:SideBar DataContext="{Binding}"/>
+			</Grid>
 
-            <!-- Content Area -->
-            <Grid Grid.Column="1" Grid.Row="3">
-                <Border Background="Transparent" Padding="20">
-                    <ContentControl Content="{Binding CurrentView}"/>
-                </Border>
-            </Grid>
-        </Grid>
-    </Border>
+			<!-- Content Area -->
+			<Grid Grid.Column="1" Grid.Row="3">
+				<Border Padding="20" Background ="#F8F9FA" Cursor="Hand">
+					
+				
+					<ContentControl Content="{Binding CurrentView}"/>
+				</Border>
+			</Grid>
+		</Grid>
+	</Border>
 </Window>

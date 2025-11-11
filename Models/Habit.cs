@@ -3,7 +3,7 @@ using System.Windows.Media;
 
 namespace HabbitFlow.Models
 {
-    
+
     public class Habit
     {
         public int Id { get; set; }
