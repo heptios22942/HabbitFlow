@@ -1,10 +1,17 @@
-﻿using System.Windows.Controls;
+﻿// Models/User.cs
+using System;
 
 namespace HabbitFlow.Models
 {
-    class User
+    /// <summary>
+    /// Данные пользователя.
+    /// </summary>
+    public class User
     {
-        public int id { get; set; }
-        public PasswordBox password { get; set; }
+        public string Id { get; set; } = Guid.NewGuid().ToString();
+        public string Name { get; set; } = "Пользователь";
+        public string Email { get; set; } = string.Empty;
+        public string PasswordHash { get; set; } = string.Empty;
+        public DateTime CreatedAt { get; set; } = DateTime.Now;
     }
 }

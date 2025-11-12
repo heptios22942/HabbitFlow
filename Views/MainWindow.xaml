@@ -55,7 +55,30 @@
 			<analiz:AnalyticsDashboardView />
 		</DataTemplate>
 
-	</Window.Resources>
+        <!-- ========== HABITS ==========
+     Группы и привычки -->
+
+        <!-- Список групп -->
+        <!--<DataTemplate DataType="{x:Type habbitgroupVM:HabitGroupListViewModel}">
+            <habbitgroup:HabbitsGroupView/>
+        </DataTemplate>-->
+
+        <!-- Редактор группы привычек -->
+        <DataTemplate DataType="{x:Type habbitgroupVM:HabitGroupEditorViewModel}">
+            <habbitgroup:HabbitsGroupEditorView/>
+        </DataTemplate>
+
+        <!-- Список привычек в группе -->
+        <DataTemplate DataType="{x:Type habbitgroupVM:HabitListViewModel}">
+            <habbitgroup:HabbitDetailsView/>
+        </DataTemplate>
+
+        <!-- Редактор/выполнение одной привычки -->
+        <DataTemplate DataType="{x:Type habbitgroupVM:HabitEditorViewModel}">
+            <habbitgroup:HabbitWriteView/>
+        </DataTemplate>
+
+    </Window.Resources>
 
 	<WindowChrome.WindowChrome>
 		<WindowChrome CaptionHeight="10" />

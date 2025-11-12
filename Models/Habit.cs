@@ -1,26 +1,22 @@
-﻿using HabbitFlow.Models.Enums;
-using System.Windows.Media;
+﻿// Models/Habit.cs
+using HabbitFlow.Models.Enums;
+using System;
 
 namespace HabbitFlow.Models
 {
-
+    /// <summary>
+    /// Конкретная привычка, принадлежащая группе.
+    /// </summary>
     public class Habit
     {
         public int Id { get; set; }
-        public string Name { get; set; }
-        public HabitType type { get; set; }
-        public TimeSpan? Time { get; set; }
-        public string ActionPlan { get; set; }
-        public bool IsCompleted { get; set; }
-        public int UserId { get; set; }
-
-        // Цвет привычки (пользователь выбирает)
-        public string ColorHex { get; set; } = "#E8F5E9"; // Цвет по умолчанию
-
-        // Свойство для WPF привязки
-        public Brush ColorBrush => new SolidColorBrush(
-            (Color)ColorConverter.ConvertFromString(ColorHex ?? "#E8F5E9"));
-
-        public string StatusColor => IsCompleted ? "#FF4CAF50" : "#FFF5F5F5";
+        public int GroupId { get; set; }                             // Связь с группой
+        public string Name { get; set; } = string.Empty;             // Название привычки
+        public HabitType Type { get; set; } = HabitType.Good;        // Тип: хорошая/плохая
+        public string Plan { get; set; } = "Мой план действия...";   // План действий
+        public TimeSpan ReminderTime { get; set; } = new(9, 0, 0);   // Время напоминания
+        public int? DurationMinutes { get; set; } = null;            // Длительность (мин), null = без времени
+        public bool IsSpecialCancelable { get; set; } = false;       // «Особо отменяемая» → повторное напоминание через 5 мин
+        public DateTime CreatedAt { get; set; } = DateTime.Now;
     }
 }

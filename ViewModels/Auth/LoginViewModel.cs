@@ -15,6 +15,7 @@ namespace HabbitFlow.ViewModels.Auth
         private readonly INavigationService _navigationService;
 
         public RelayCommand NavigateToRegCommand { get; }
+        public RelayCommand NavigateToEmail { get; }
 
         public LoginViewModel(INavigationService navigationService)
         {
@@ -25,6 +26,10 @@ namespace HabbitFlow.ViewModels.Auth
                 execute: () => _navigationService.NavigateTo<RegistrationView>(),
                 canExecute: () => true
             );
+            NavigateToEmail = new RelayCommand(
+               execute: () => _navigationService.NavigateTo<EmailConfirmationView>(),
+               canExecute: () => true
+           );
         }
 
 
