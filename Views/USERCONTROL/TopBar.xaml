@@ -16,7 +16,7 @@
         <Button Content="▢" FontSize="18" Padding=" 0 -4 0 0" Width="40" Height="18" HorizontalAlignment="Right" 
                 Margin="0,0,59,0" Style="{StaticResource MaterialDesignFlatDarkButton}"
                  Click="Button_Click"/>
-        <Button Content="-" FontSize="25" Padding=" 0 -24 0 0" Width="40" Height="40" Click="Button_Click_1" HorizontalAlignment="Right" Margin="0,0,105,-4" Style="{StaticResource MaterialDesignToolButton}" />
-        <Button Content="X" FontSize="15" Padding=" 0 -20 0 0" Width="40" Height="40" Click="Button_Click_2" HorizontalAlignment="Right" Margin="0,0,9,-4" Style="{StaticResource MaterialDesignToolButton}" />
+        <Button Content="-" FontSize="25" Padding=" 0 -24 0 0" Width="40" Height="40" Click="Button_Click_1" HorizontalAlignment="Right" Margin="0,0,105,-4" Style="{StaticResource  MaterialDesignFlatDarkButton}" />
+        <Button Content="X" FontSize="15" Padding=" 0 -20 0 0" Width="40" Height="40" Click="Button_Click_2" HorizontalAlignment="Right" Margin="0,0,9,-4" Style="{StaticResource  MaterialDesignFlatDarkButton}" />
     </Grid>
 </UserControl>
