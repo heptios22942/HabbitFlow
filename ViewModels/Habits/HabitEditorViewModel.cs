@@ -5,6 +5,7 @@
         public HabitEditorViewModel(MainViewModel mainVm)
         {
             // Пока ничего не делаем — только конструктор для навигации
+            Console.WriteLine("fghfghfg");
         }
     }
 }

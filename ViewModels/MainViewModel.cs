@@ -66,6 +66,7 @@ namespace HabbitFlow.ViewModels
         public void NavigateToEditorHabbit()
         {
             CurrentView = new HabitEditorViewModel(this);
+           
         }
 
 

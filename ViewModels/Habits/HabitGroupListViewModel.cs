@@ -7,14 +7,18 @@ using System.Collections.Specialized; // Добавьте это
 namespace HabbitFlow.ViewModels.Habits
 {
     public class HabitGroupListViewModel : ViewModelBase
+
+        
     {
+
+  
         private readonly MainViewModel _mainVm;
 
         public ObservableCollection<HabitGroup> HabitGroups { get; }
         public bool IsEmpty => !HabitGroups.Any();
 
         public ICommand AddNewGroupCommand { get; }
-
+        public ICommand AddCommand { get; }
         public HabitGroupListViewModel(MainViewModel mainVm)
         {
             _mainVm = mainVm;
@@ -27,6 +31,7 @@ namespace HabbitFlow.ViewModels.Habits
             };
 
             AddNewGroupCommand = new RelayCommand(_ => _mainVm.NavigateToEditorGroup());
+            AddCommand = new RelayCommand(_ => _mainVm.NavigateToEditorHabbit());
         }
     }
 }

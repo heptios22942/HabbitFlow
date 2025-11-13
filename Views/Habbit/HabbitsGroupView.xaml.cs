@@ -1,4 +1,5 @@
 ﻿using System.Windows.Controls;
+using HabbitFlow.ViewModels.Habits;
 
 namespace HabbitFlow.Views.Habbit
 {
