@@ -124,7 +124,7 @@
                             </StackPanel>
                         </Grid>
 
-                        <ProgressBar Value="{Binding CompletionProgress}" Maximum="100" 
+                        <ProgressBar Value="{Binding CompletionProgress}" Maximum="100" Style="{StaticResource MaterialDesignLinearProgressBar}"
                                     Height="8" Background="#E0E0E0" Foreground="#4CAF50"
                                     />
                     </StackPanel>

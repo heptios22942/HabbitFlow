@@ -55,7 +55,7 @@ namespace HabbitFlow.ViewModels
             NavigateToEditorGroupCommand =  new RelayCommand((param) => NavigateToEditorGroup());
             NavigateToEditorHabbitCommand =  new RelayCommand((param) => NavigateToEditorHabbit());
 
-     
+
             NavigateToListHabbitCommand =  new RelayCommand((param) => NavigateToListHabbit());
             // Начальная навигация
             NavigateToDashboard();
@@ -66,7 +66,7 @@ namespace HabbitFlow.ViewModels
         public void NavigateToEditorHabbit()
         {
             CurrentView = new HabitEditorViewModel(this);
-           
+
         }
 
 
@@ -122,15 +122,17 @@ namespace HabbitFlow.ViewModels
         public ObservableCollection<HabitExecution> Executions { get; } = new();
 
         // Метод для добавления новой группы
-        public void AddHabitGroup(string name, string icon, string memo, bool enableMotivation)
+        public void AddHabitGroup(string name, string icon, string memo, bool enableMotivation, string color)
         {
             var group = new HabitGroup
             {
                 Name = name,
                 Icon = icon,
                 Memo = memo,
+                Color = color,
                 EnableMotivation = enableMotivation,
-                CreatedAt = DateTime.Now
+                CreatedAt = DateTime.Now,
+                Habits = new ObservableCollection<Habit>() // Явно инициализируем коллекцию
             };
 
             group.Id = HabitGroups.Count > 0 ? HabitGroups.Max(g => g.Id) + 1 : 1;
@@ -140,15 +142,16 @@ namespace HabbitFlow.ViewModels
         public void AddHabit(Habit habit)
         {
             if (habit == null) return;
+
             habit.Id = Habits.Count > 0 ? Habits.Max(h => h.Id) + 1 : 1;
             Habits.Add(habit);
-        }
 
-        public void AddExecution(HabitExecution execution)
-        {
-            if (execution == null) return;
-            execution.Id = Executions.Count > 0 ? Executions.Max(e => e.Id) + 1 : 1;
-            Executions.Add(execution);
+            // Также добавляем привычку в группу (если нужно)
+            var group = HabitGroups.FirstOrDefault(g => g.Id == habit.GroupId);
+            if (group != null)
+            {
+                group.Habits.Add(habit);
+            }
         }
 
 

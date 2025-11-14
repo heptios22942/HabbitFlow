@@ -27,11 +27,6 @@
                 <TextBlock Grid.Column="1" Text="Редактирование группы" 
                           FontSize="22" FontWeight="Bold" 
                           Foreground="White" VerticalAlignment="Center" Margin="15,0,0,0"/>
-
-                <!-- Правая часть (опционально можно оставить пустой) -->
-                <StackPanel Grid.Column="2" Orientation="Horizontal">
-                    <!-- Можно добавить имя пользователя позже -->
-                </StackPanel>
             </Grid>
         </Border>
 
@@ -41,46 +36,83 @@
                 <!-- Group Editor Card -->
                 <Border Background="White" CornerRadius="8" BorderThickness="1" BorderBrush="#E0E0E0"
                         Margin="0,0,0,20" Padding="25">
-                    <StackPanel >
+                    <StackPanel>
 
-                        <!-- Иконка группы -->
+                        <!-- Иконка и цвет группы -->
                         <StackPanel>
-                            <TextBlock Text="Иконка группы" 
-                                      FontSize="14" FontWeight="SemiBold" Foreground="#333333" 
-                                      Margin="0,0,0,8"/>
+                            <StackPanel Orientation="Horizontal">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Text="Иконка группы" Grid.Column="0" 
+                                               FontSize="14" FontWeight="SemiBold" Foreground="#333333" 
+                                               Margin="0,0,0,8"/>
+                                    <TextBlock Text="Цвет группы" Grid.Column="1"
+                                               FontSize="14" FontWeight="SemiBold" Foreground="#333333" 
+                                               Margin="0,0,0,8" HorizontalAlignment="Right"/>
+                                </Grid>
+                            </StackPanel>
+
                             <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+                                <!-- Выбор иконки -->
                                 <ComboBox ItemsSource="{Binding AvailableIcons}"
                                           SelectedItem="{Binding Icon}"
                                           Width="80" 
                                           Height="50" 
-                                          FontSize="25" 
+                                          FontSize="20" 
                                           HorizontalContentAlignment="Center"
                                           VerticalContentAlignment="Center"
                                           BorderBrush="#CCCCCC" 
                                           Background="White"
-                                         
                                           BorderThickness="1"
-                                           ScrollViewer.VerticalScrollBarVisibility="Auto"
-          ScrollViewer.CanContentScroll="True">
+                                          Margin="0,0,20,0">
                                     <ComboBox.ItemTemplate>
                                         <DataTemplate>
                                             <TextBlock Text="{Binding}" 
-                                                       FontSize="25" 
-                                                       HorizontalAlignment="Stretch" 
-                                                       VerticalAlignment="Stretch"
-                                                       Background="White"
-                                                       />
+                                                       FontSize="20" 
+                                                       HorizontalAlignment="Center" 
+                                                       VerticalAlignment="Center"
+                                                       Padding="10"/>
                                         </DataTemplate>
                                     </ComboBox.ItemTemplate>
                                 </ComboBox>
-                                <TextBlock Text="Примеры: 📚 🏃 🧘 💪"
-                                           FontSize="12" Foreground="#666666" 
-                                           FontStyle="Italic" Margin="10,15,0,0"/>
+
+                                <!-- Выбор цвета -->
+                                <ComboBox ItemsSource="{Binding AvailableColors}"
+                                          SelectedItem="{Binding Color}"
+                                          Width="80" 
+                                          Height="50" 
+                                          HorizontalContentAlignment="Center"
+                                          VerticalContentAlignment="Center"
+                                          BorderBrush="#CCCCCC" 
+                                          Background="White"
+                                          BorderThickness="1">
+                                    <ComboBox.Resources>
+                                        <SolidColorBrush x:Key="{x:Static SystemColors.WindowBrushKey}" Color="White"/>
+                                    </ComboBox.Resources>
+                                    <ComboBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <Border Width="35" 
+                                                    Height="35" 
+                                                    CornerRadius="4"  
+                                                    Background="{Binding}" 
+                                                    Margin="4" 
+                                                    BorderBrush="#666666" 
+                                                    BorderThickness="1">
+                                                <Border.Effect>
+                                                    <DropShadowEffect ShadowDepth="1" Opacity="0.2" BlurRadius="2"/>
+                                                </Border.Effect>
+                                            </Border>
+                                        </DataTemplate>
+                                    </ComboBox.ItemTemplate>
+                                </ComboBox>
                             </StackPanel>
                         </StackPanel>
 
                         <!-- Название группы -->
-                        <StackPanel Margin="20">
+                        <StackPanel Margin="0,20,0,0">
                             <TextBlock Text="Название группы *" 
                                       FontSize="14" FontWeight="SemiBold" Foreground="#333333" 
                                       Margin="0,0,0,8"/>
@@ -89,16 +121,19 @@
                                      FontSize="16"
                                      Padding="12,10"
                                      BorderBrush="#CCCCCC" BorderThickness="1"
-                                     Background="White"/>
+                                     Background="White"
+                                     materialDesign:HintAssist.Hint="Введите название группы"/>
                         </StackPanel>
 
                         <!-- Мотивационные уведомления -->
                         <CheckBox Content="Присылать мотивационные сообщения"
-                                  IsChecked="{Binding EnableMotivation}" Style="{StaticResource MaterialDesignChoiceChipOutlineRadioButton}"
-                                  FontSize="14" Foreground="#333333"/>
+                                  IsChecked="{Binding EnableMotivation}" 
+                                  Style="{StaticResource MaterialDesignChoiceChipOutlineRadioButton}"
+                                  FontSize="14" Foreground="#333333"
+                                  Margin="0,20,0,0"/>
 
                         <!-- Памятка -->
-                        <StackPanel>
+                        <StackPanel Margin="0,20,0,0">
                             <TextBlock Text="Памятка (ваши личные рекомендации)" 
                                       FontSize="14" FontWeight="SemiBold" Foreground="#333333" 
                                       Margin="0,0,0,8"/>
@@ -110,49 +145,58 @@
                                      FontSize="14"
                                      Padding="12,10"
                                      BorderBrush="#CCCCCC" BorderThickness="1"
-                                     Background="White"/>
+                                     Background="White"
+                                     materialDesign:HintAssist.Hint="Добавьте памятку или рекомендации..."/>
                             <TextBlock FontSize="12" Foreground="#666666" FontStyle="Italic" Margin="0,5,0,0">
-    
-    <Hyperlink NavigateUri="https://royallib.com/read/musasi_miyamoto/kniga_pyati_kolets.html#0"
-               RequestNavigate="Hyperlink_RequestNavigate">
-        Совет из книги (Рекоммендовано к ознакомлению)
-    </Hyperlink>
-
+                                <Hyperlink NavigateUri="https://royallib.com/read/musasi_miyamoto/kniga_pyati_kolets.html#0"
+                                           RequestNavigate="Hyperlink_RequestNavigate">
+                                    Совет из книги (Рекомендовано к ознакомлению)
+                                </Hyperlink>
                             </TextBlock>
                         </StackPanel>
 
                         <!-- Кнопки -->
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,15,0,0">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,25,0,0">
                             <Button Content="Отмена"
                                     Command="{Binding GoBackCommand}"
                                     Background="White"
                                     Foreground="#4CAF50"
                                     BorderBrush="#4CAF50"
                                     BorderThickness="1"
-                                   
+                                    Padding="20,10"
                                     FontWeight="SemiBold"
                                     Cursor="Hand"
                                     Margin="0,0,15,0">
-                                <Button.Template>
-                                    <ControlTemplate TargetType="Button">
-                                        <Border x:Name="border"
-                                                Background="{TemplateBinding Background}"
-                                                BorderBrush="{TemplateBinding BorderBrush}"
-                                                BorderThickness="{TemplateBinding BorderThickness}"
-                                                CornerRadius="6">
-                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"
-                                                              Margin="{TemplateBinding Padding}"/>
-                                        </Border>
-                                        <ControlTemplate.Triggers>
-                                            <Trigger Property="IsMouseOver" Value="True">
-                                                <Setter TargetName="border" Property="Background" Value="#F5F5F5"/>
-                                            </Trigger>
-                                            <Trigger Property="IsPressed" Value="True">
-                                                <Setter TargetName="border" Property="Background" Value="#E8F5E8"/>
-                                            </Trigger>
-                                        </ControlTemplate.Triggers>
-                                    </ControlTemplate>
-                                </Button.Template>
+                                <Button.Style>
+                                    <Style TargetType="Button">
+                                        <Setter Property="Background" Value="White"/>
+                                        <Setter Property="Foreground" Value="#4CAF50"/>
+                                        <Setter Property="BorderBrush" Value="#4CAF50"/>
+                                        <Setter Property="BorderThickness" Value="1"/>
+                                        <Setter Property="Template">
+                                            <Setter.Value>
+                                                <ControlTemplate TargetType="Button">
+                                                    <Border x:Name="border"
+                                                            Background="{TemplateBinding Background}"
+                                                            BorderBrush="{TemplateBinding BorderBrush}"
+                                                            BorderThickness="{TemplateBinding BorderThickness}"
+                                                            CornerRadius="6">
+                                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"
+                                                                          Margin="{TemplateBinding Padding}"/>
+                                                    </Border>
+                                                    <ControlTemplate.Triggers>
+                                                        <Trigger Property="IsMouseOver" Value="True">
+                                                            <Setter TargetName="border" Property="Background" Value="#F5F5F5"/>
+                                                        </Trigger>
+                                                        <Trigger Property="IsPressed" Value="True">
+                                                            <Setter TargetName="border" Property="Background" Value="#E8F5E8"/>
+                                                        </Trigger>
+                                                    </ControlTemplate.Triggers>
+                                                </ControlTemplate>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Style>
+                                </Button.Style>
                             </Button>
 
                             <Button Content="Сохранить"
@@ -160,29 +204,37 @@
                                     Background="#4CAF50"
                                     Foreground="White"
                                     BorderThickness="0"
-                                    
+                                    Padding="20,10"
                                     FontWeight="SemiBold"
                                     Cursor="Hand">
-                                <Button.Template>
-                                    <ControlTemplate TargetType="Button">
-                                        <Border x:Name="border"
-                                                Background="{TemplateBinding Background}"
-                                                BorderBrush="{TemplateBinding BorderBrush}"
-                                                BorderThickness="{TemplateBinding BorderThickness}"
-                                                CornerRadius="6">
-                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"
-                                                              Margin="{TemplateBinding Padding}"/>
-                                        </Border>
-                                        <ControlTemplate.Triggers>
-                                            <Trigger Property="IsMouseOver" Value="True">
-                                                <Setter TargetName="border" Property="Background" Value="#45a049"/>
-                                            </Trigger>
-                                            <Trigger Property="IsPressed" Value="True">
-                                                <Setter TargetName="border" Property="Background" Value="#3d8b40"/>
-                                            </Trigger>
-                                        </ControlTemplate.Triggers>
-                                    </ControlTemplate>
-                                </Button.Template>
+                                <Button.Style>
+                                    <Style TargetType="Button">
+                                        <Setter Property="Background" Value="#4CAF50"/>
+                                        <Setter Property="Foreground" Value="White"/>
+                                        <Setter Property="Template">
+                                            <Setter.Value>
+                                                <ControlTemplate TargetType="Button">
+                                                    <Border x:Name="border"
+                                                            Background="{TemplateBinding Background}"
+                                                            BorderBrush="{TemplateBinding BorderBrush}"
+                                                            BorderThickness="{TemplateBinding BorderThickness}"
+                                                            CornerRadius="6">
+                                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"
+                                                                          Margin="{TemplateBinding Padding}"/>
+                                                    </Border>
+                                                    <ControlTemplate.Triggers>
+                                                        <Trigger Property="IsMouseOver" Value="True">
+                                                            <Setter TargetName="border" Property="Background" Value="#45a049"/>
+                                                        </Trigger>
+                                                        <Trigger Property="IsPressed" Value="True">
+                                                            <Setter TargetName="border" Property="Background" Value="#3d8b40"/>
+                                                        </Trigger>
+                                                    </ControlTemplate.Triggers>
+                                                </ControlTemplate>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Style>
+                                </Button.Style>
                             </Button>
                         </StackPanel>
                     </StackPanel>
